@@ -69,12 +69,12 @@ int Eqaul(int[] collect, int find)
     int position = -1;
     while (index < lenght)
     {
-        if (collect[index] == find);
+        if (collect[index] == find)
         {
             position = index;
             break;
         }
-        index++;
+        index = index + 1;
     }
     return position;
 }
