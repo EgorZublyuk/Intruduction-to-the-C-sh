@@ -54,7 +54,7 @@
 bool Weekend(int day)
 {
     return(day == 7 || day == 6);
-//     if ( day == 7 && day == 6)
+//     if ( day == 7 || day == 6)
 //     {
 //         return Console.WriteLine("Yes");
 //     }
