@@ -85,7 +85,7 @@ double[] CreateRandomRealArray (int size, int minWhole, int maxWhole)
     for(int i = 0; i < newArray.Length; i++)
     {
     double whole = new Random().Next(minWhole, maxWhole+1);
-    double fract = new Random().NextDouble();
+    double fract = Math.Round(new Random().NextDouble(), 3);
         newArray[i] = whole + fract;
     }
     return newArray;
