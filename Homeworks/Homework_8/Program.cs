@@ -36,17 +36,17 @@ void Show2DArray(int[,] array)
     Console.WriteLine();
 }
 
-// Console.WriteLine ("Input number rows array:");
-// int rows = Convert.ToInt32(Console.ReadLine());
-// Console.WriteLine ("Input number columns array:");
-// int columns = Convert.ToInt32(Console.ReadLine());
-// Console.WriteLine ("Input minimal value of array element:");
-// int minValue = Convert.ToInt32(Console.ReadLine());
-// Console.WriteLine ("Input maximal value of array element:");
-// int maxValue = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine ("Input number rows array:");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine ("Input number columns array:");
+int columns = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine ("Input minimal value of array element:");
+int minValue = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine ("Input maximal value of array element:");
+int maxValue = Convert.ToInt32(Console.ReadLine());
 
-// int [,] myArray = Create2DRandomArray(rows,columns,minValue,maxValue);
-// Show2DArray(myArray);
+int [,] myArray = Create2DRandomArray(rows,columns,minValue,maxValue);
+Show2DArray(myArray);
 
 //  int[,] LowToHigh(int[,] array)
 // {
@@ -122,59 +122,51 @@ void Show2DArray(int[,] array)
 // 15 18
 
 
-int[,] CompositionArray (int[,] firstArray, int[,] secondArray)
-{
-    int [,] SummArray = new int[firstArray.GetLength(0),secondArray.GetLength(1)];
-    for(int i = 0; i < SummArray.GetLength(0); i++)
-    {
-        for(int j = 0; j < SummArray.GetLength(1); j++)
-        {   
-            int a = 0;
-            for(int b = 0; b < SummArray.GetLength(1); b++)
-            {
-                if(a >= firstArray.GetLength(1))
-                {
-                    a = 0;
-                }
-                SummArray[i,j] += firstArray[i,a] * secondArray[b,j];
-                a++;
-            }
-        }
-    }
-    return SummArray;
-}
+// int[,] CompositionArray (int[,] firstArray, int[,] secondArray)
+// {
+//     int [,] SummArray = new int[firstArray.GetLength(0),secondArray.GetLength(1)];
+//     for(int i = 0; i < SummArray.GetLength(0); i++)
+//     {
+//         for(int j = 0; j < SummArray.GetLength(1); j++)
+//         {   
+//             int c = 0;
+//             int a = 0;
+//             for(int b = 0; b < SummArray.GetLength(0); b++)
+//             {
+//                 if(c > firstArray.GetLength(1))
+//                 {
+//                     c = 0;
+//                 }
+//                 SummArray[i,j] += firstArray[i,a] * secondArray[b,j];
+//                 a++;
+//                 c++;
+//             }
+//         }
+//     }
+//     return SummArray;
+// }
 
-Console.WriteLine ("Input number rows in first array:");
-int firstRows = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine ("Input number columns in first array:");
-int firstColumns = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine ("Input number rows in second array:");
-int secondRows = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine ("Input number columns in second array:");
-int secondColumns = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine ("Input minimal value of all array element:");
-int minValue = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine ("Input maximal value of all array element:");
-int maxValue = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine();
+// Console.WriteLine ("Input number rows in first array:");
+// int firstRows = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine ("Input number columns in first array:");
+// int firstColumns = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine ("Input number rows in second array:");
+// int secondRows = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine ("Input number columns in second array:");
+// int secondColumns = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine ("Input minimal value of all array element:");
+// int minValue = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine ("Input maximal value of all array element:");
+// int maxValue = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine();
 
-int [,] firstArray = Create2DRandomArray(firstRows,firstColumns,minValue,maxValue);
-Show2DArray(firstArray);
-int [,] secondArray = Create2DRandomArray(secondRows,secondColumns,minValue,maxValue);
-Show2DArray(secondArray);
+// int [,] firstArray = Create2DRandomArray(firstRows,firstColumns,minValue,maxValue);
+// Show2DArray(firstArray);
+// int [,] secondArray = Create2DRandomArray(secondRows,secondColumns,minValue,maxValue);
+// Show2DArray(secondArray);
 
-int[,] compArray = CompositionArray(firstArray,secondArray);
-Show2DArray(compArray);
-
-
-
-
-
-
-
-
-
-
+// int[,] compArray = CompositionArray(firstArray,secondArray);
+// Show2DArray(compArray);
 
 
 
@@ -184,8 +176,6 @@ Show2DArray(compArray);
 // 34(1,0,0) 41(1,1,0)
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
-
-
 
 // int[,,] Create3DArrayFor2thNumbersDigit (int rows, int columns, int Whelths)
 // {
@@ -258,32 +248,88 @@ Show2DArray(compArray);
 // 11 16 15 06
 // 10 09 08 07
 
+int[,] SpiralFilling (int[,] array)
+{   
+    int endI = 0;
+    int endJ = 0;
+    int i = 0;
+    int j = 0;
+    int counter = 01;
+    array[i,j] = counter;
+    if(array.GetLength(0) == array.GetLength(1))
+    {
+        if(array.GetLength(0)%2==0) 
+        {
+            endI = array.GetLength(0)/2;
+            endJ = (array.GetLength(1)-1)/2;
+        }
+        else 
+        {
+            endI = ((array.GetLength(0))/2);      // При заполнении симметирчного нечётного масива 
+            endJ = ((array.GetLength(1))/2);      // не заполняет центр. Почему, не понимаю. 
+        }
+        
+    }
+    else
+    {
+        if(array.GetLength(0) < array.GetLength(1))
+        {
+            endI = array.GetLength(0)/2 + 1;
+            if(array.GetLength(0) % 2 == 0)
+            {
+                endJ = array.GetLength(0)/2 - 1;
+            }
+            else
+            {
+                endJ = array.GetLength(1) - array.GetLength(0)/2;
+            }
+        }
+        else
+        {
+            endJ = array.GetLength(1)/2 + 1;
+            if(array.GetLength(1) % 2 == 0)
+            {
+                endI = array.GetLength(1)/2;
+            }
+            else
+            {
+                endI = array.GetLength(0) - (array.GetLength(1)/2 + 1);
+            }
+        }
+    }
+    while(i != endI && j != endJ)
+    {
+        while(array[i,j+1] == 0 )
+        {
+            j++;
+            counter++;
+            array[i,j] = counter;
+            if(j == array.GetLength(1)-1) break;
+        }
+        while(array[i+1,j] == 0 )
+        {
+            i++;
+            counter++;
+            array[i,j] = counter;
+            if(i == array.GetLength(0)-1) break;
+        }
+        while( array[i,j-1] == 0)
+        {
+            j--;
+            counter++;
+            array[i,j] = counter;
+            if(j == 0) break;
+        }
+        while( array[i-1,j] == 0)
+        {
+            i--;
+            counter++;
+            array[i,j] = counter;
+            if(i == 0) break;
+        }
+    }
+    return array;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Итоговое задание по рекурсии!
-
-// Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
-
-// N = 5 -> "5, 4, 3, 2, 1"
-// N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
-
-// Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
-
-// M = 1; N = 15 -> 120
-// M = 4; N = 8. -> 30
-
-// Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
-// m = 2, n = 3 -> A(m,n) = 9
-// m = 3, n = 2 -> A(m,n) = 29
+    SpiralFilling(myArray);
+    Show2DArray(myArray);
